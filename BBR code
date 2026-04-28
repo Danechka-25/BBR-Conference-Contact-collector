@@ -20,22 +20,21 @@
 
   <style>
     :root {
-      --bb-green-50: #f5fbef;
-      --bb-green-100: #e8f6d7;
-      --bb-green-200: #d9efbe;
-      --bb-green-300: #c8e59f;
-      --bb-green-400: #a8d46e;
-      --bb-green-500: #8fc44a;
-      --bb-green-600: #6fa436;
-      --bb-green-700: #4d7f24;
-      --bb-green-800: #355b19;
-      --ink: #20311b;
-      --muted: #5d6e55;
+      --bb-green-50: #f7fcf3;
+      --bb-green-100: #ebf6e0;
+      --bb-green-200: #d9edc6;
+      --bb-green-300: #c4e2a6;
+      --bb-green-400: #a6d27a;
+      --bb-green-500: #88bc53;
+      --bb-green-600: #699d3c;
+      --bb-green-700: #507b2d;
+      --bb-green-800: #35531e;
+      --ink: #22331f;
+      --muted: #67775f;
       --white: #ffffff;
-      --shadow: 0 24px 70px rgba(90, 129, 45, 0.18);
+      --shadow: 0 24px 70px rgba(93, 132, 52, 0.18);
       --radius-xl: 28px;
       --radius-lg: 20px;
-      --radius-md: 14px;
     }
 
     * {
@@ -50,56 +49,26 @@
       font-family: "Manrope", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(200, 229, 159, 0.8), transparent 34%),
-        radial-gradient(circle at right 20%, rgba(143, 196, 74, 0.18), transparent 28%),
-        linear-gradient(180deg, #f9fff4 0%, #eef8e2 100%);
+        radial-gradient(circle at top left, rgba(196, 226, 166, 0.72), transparent 32%),
+        radial-gradient(circle at 90% 20%, rgba(136, 188, 83, 0.16), transparent 24%),
+        linear-gradient(180deg, #fbfff8 0%, #eef7e6 100%);
     }
 
     body {
-      position: relative;
       overflow-x: hidden;
     }
 
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      z-index: 0;
-      border-radius: 999px;
-      filter: blur(12px);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    body::before {
-      width: 340px;
-      height: 340px;
-      background: rgba(143, 196, 74, 0.12);
-      top: -80px;
-      right: -60px;
-    }
-
-    body::after {
-      width: 280px;
-      height: 280px;
-      background: rgba(111, 164, 54, 0.1);
-      bottom: 40px;
-      left: -80px;
-    }
-
     .page {
-      position: relative;
-      z-index: 1;
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 32px 16px;
+      padding: 28px 16px;
     }
 
     .card {
       width: min(980px, 100%);
-      background: rgba(255, 255, 255, 0.86);
-      border: 1px solid rgba(111, 164, 54, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(105, 157, 60, 0.14);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
@@ -107,8 +76,7 @@
     }
 
     .hero {
-      position: relative;
-      padding: 30px 30px 10px;
+      padding: 30px 30px 12px;
     }
 
     .logo-row {
@@ -118,25 +86,22 @@
       margin-bottom: 18px;
       padding: 10px 14px;
       border-radius: 999px;
-      background: linear-gradient(180deg, #f8fff1 0%, #eff9e1 100%);
-      border: 1px solid rgba(143, 196, 74, 0.25);
+      background: linear-gradient(180deg, #f8fff3 0%, #eef8e3 100%);
+      border: 1px solid rgba(136, 188, 83, 0.25);
     }
 
     .logo-mark {
       width: 42px;
       height: 42px;
-      flex: 0 0 42px;
       display: grid;
       place-items: center;
       border-radius: 50%;
       background: linear-gradient(180deg, var(--bb-green-500), var(--bb-green-600));
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
-    }
-
-    .logo-mark svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--white);
+      color: var(--white);
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1;
     }
 
     .logo-text {
@@ -159,7 +124,7 @@
     .heading {
       display: grid;
       gap: 10px;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
 
     .eyebrow {
@@ -172,15 +137,15 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-size: clamp(2rem, 4vw, 3.3rem);
       line-height: 0.98;
       letter-spacing: -0.04em;
-      max-width: 12ch;
+      max-width: 13ch;
     }
 
     .subtitle {
       margin: 0;
-      max-width: 55ch;
+      max-width: 58ch;
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.6;
@@ -213,21 +178,21 @@
     }
 
     .input-shell {
-      position: relative;
       display: flex;
       align-items: center;
       min-height: 76px;
       padding: 0 18px;
       background: linear-gradient(180deg, #ffffff 0%, #f7fcec 100%);
-      border: 1px solid rgba(143, 196, 74, 0.32);
+      border: 1px solid rgba(136, 188, 83, 0.34);
       border-radius: var(--radius-lg);
       transition: 0.22s ease;
     }
 
-    .input-shell:focus-within {
+    .input-shell:focus-within,
+    .social-box:focus-within {
       transform: translateY(-1px);
       border-color: var(--bb-green-500);
-      box-shadow: 0 0 0 5px rgba(143, 196, 74, 0.14);
+      box-shadow: 0 0 0 5px rgba(136, 188, 83, 0.14);
     }
 
     input[type="text"],
@@ -243,7 +208,7 @@
     }
 
     input::placeholder {
-      color: #8da381;
+      color: #8ca17f;
       font-weight: 500;
     }
 
@@ -251,8 +216,9 @@
       padding: 16px 18px;
       min-height: 76px;
       background: linear-gradient(180deg, #ffffff 0%, #f7fcec 100%);
-      border: 1px solid rgba(143, 196, 74, 0.32);
+      border: 1px solid rgba(136, 188, 83, 0.34);
       border-radius: var(--radius-lg);
+      transition: 0.22s ease;
     }
 
     .social-options {
@@ -278,7 +244,7 @@
       gap: 10px;
       padding: 12px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(143, 196, 74, 0.24);
+      border: 1px solid rgba(136, 188, 83, 0.24);
       background: #fbfff7;
       cursor: pointer;
       transition: 0.2s ease;
@@ -287,10 +253,28 @@
       color: var(--ink);
     }
 
-    .social-pill svg {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
+    .social-pill::before {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .social-pill.telegram::before {
+      content: "✈";
+    }
+
+    .social-pill.whatsapp::before {
+      content: "◔";
+    }
+
+    .social-pill.vk::before {
+      content: "VK";
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .social-pill.email::before {
+      content: "@";
+      font-weight: 800;
     }
 
     .social-option input:checked + .social-pill {
@@ -298,13 +282,13 @@
       color: var(--white);
       border-color: transparent;
       transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(111, 164, 54, 0.24);
+      box-shadow: 0 10px 22px rgba(105, 157, 60, 0.24);
     }
 
     .actions {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
       margin-top: 8px;
     }
@@ -322,13 +306,13 @@
       color: var(--white);
       background: linear-gradient(180deg, var(--bb-green-600), var(--bb-green-700));
       cursor: pointer;
-      box-shadow: 0 18px 30px rgba(77, 127, 36, 0.24);
+      box-shadow: 0 18px 30px rgba(80, 123, 45, 0.24);
       transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
     .button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 24px 34px rgba(77, 127, 36, 0.26);
+      box-shadow: 0 24px 34px rgba(80, 123, 45, 0.26);
     }
 
     .button:disabled {
@@ -343,15 +327,6 @@
       text-align: center;
       font-size: 0.95rem;
       color: var(--muted);
-    }
-
-    .note {
-      margin: 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-      max-width: 60ch;
     }
 
     @media (max-width: 820px) {
@@ -409,23 +384,18 @@
     <section class="card">
       <div class="hero">
         <div class="logo-row" aria-label="B. Braun">
-          <div class="logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z"></path>
-            </svg>
-          </div>
+          <div class="logo-mark" aria-hidden="true">+</div>
           <div class="logo-text">
             <strong>B. Braun</strong>
-            <span>Связь с представителями компании</span>
+            <span>Форма связи с представителями</span>
           </div>
         </div>
 
         <div class="heading">
-          <div class="eyebrow">Форма контакта</div>
+          <div class="eyebrow">Контактная форма</div>
           <h1>Оставьте заявку для обратной связи</h1>
           <p class="subtitle">
-            Заполните данные, и информация будет передана представителям B. Braun.
-            Можно оставить даже частично заполненную заявку.
+            Заполните данные, чтобы представители B. Braun могли с вами связаться.
           </p>
         </div>
       </div>
@@ -478,42 +448,22 @@
                 <div class="social-options">
                   <label class="social-option">
                     <input type="radio" name="social" value="Telegram" />
-                    <span class="social-pill">
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M21.4 4.6 18.3 19c-.2 1-.8 1.3-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.8.4l.3-4.7 8.6-7.8c.4-.3-.1-.5-.5-.2L7 13l-4.4-1.4c-1-.3-1-1 .2-1.4l17.1-6.6c.8-.3 1.5.2 1.2 1z"/>
-                      </svg>
-                      Telegram
-                    </span>
+                    <span class="social-pill telegram">Telegram</span>
                   </label>
 
                   <label class="social-option">
                     <input type="radio" name="social" value="WhatsApp" />
-                    <span class="social-pill">
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M20 3.9A10 10 0 0 0 4.3 16.2L3 21l4.9-1.3A10 10 0 1 0 20 3.9Zm-8 16.3c-1.6 0-3.2-.4-4.6-1.2l-.3-.2-2.9.8.8-2.8-.2-.3a8.1 8.1 0 1 1 7.2 3.7Zm4.4-6c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.1-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5.2-.4c.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.7-.8 1.7s.8 2 1 2.1c.1.2 1.6 2.5 4 3.4.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .2-1.1s-.2-.1-.4-.2Z"/>
-                      </svg>
-                      WhatsApp
-                    </span>
+                    <span class="social-pill whatsapp">WhatsApp</span>
                   </label>
 
                   <label class="social-option">
                     <input type="radio" name="social" value="VK" />
-                    <span class="social-pill">
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12.8 17h1.2s.4 0 .6-.2c.2-.2.2-.5.2-.5s0-1.4.6-1.6c.6-.2 1.4 1.4 2.2 2 .6.5 1 .4 1 .4l2.1-.1s1.1-.1.6-.9c0-.1-.4-.8-1.9-2.2-1.5-1.4-1.3-1.2.5-3.5 1.1-1.4 1.5-2.2 1.4-2.6-.1-.4-.8-.3-.8-.3h-2.4s-.2 0-.4.1c-.2.1-.3.4-.3.4s-.4 1.1-.9 2c-1 1.9-1.5 2-1.6 2-.4-.2-.3-.9-.3-1.4 0-1.5.2-2.1-.4-2.3-.2-.1-.4-.2-1.1-.2h-1.8c-.6 0-.8 0-1 .2-.2.2-.3.4-.1.4.2 0 .5.1.7.4.2.3.2.9.2.9s.1 1.8-.3 2c-.3.1-.8-1-1.7-2.1-.5-.7-.9-1.1-.9-1.1s-.1-.1-.3-.2c-.2-.1-.5-.1-.5-.1H4.4s-.6 0-.8.3c-.2.3 0 .8 0 .8s1.9 4.4 4.1 6.6c2 2 4.2 1.9 4.2 1.9Z"/>
-                      </svg>
-                      VK
-                    </span>
+                    <span class="social-pill vk">VK</span>
                   </label>
 
                   <label class="social-option">
                     <input type="radio" name="social" value="Email" />
-                    <span class="social-pill">
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M3 6.8A1.8 1.8 0 0 1 4.8 5h14.4A1.8 1.8 0 0 1 21 6.8v10.4a1.8 1.8 0 0 1-1.8 1.8H4.8A1.8 1.8 0 0 1 3 17.2Zm1.8-.3 7.2 5.2 7.2-5.2H4.8Zm14.4 11V8.3l-6.7 4.8a1 1 0 0 1-1.1 0L4.8 8.3v9.2h14.4Z"/>
-                      </svg>
-                      Email
-                    </span>
+                    <span class="social-pill email">Email</span>
                   </label>
                 </div>
               </div>
@@ -524,10 +474,7 @@
             <button class="button" id="submitBtn" type="submit">
               Проинформировать представителей B.Braun
             </button>
-            <p class="status" id="status">Данные можно отправить даже при частичном заполнении.</p>
-            <p class="note">
-              Для автоматической отправки с GitHub Pages подключён EmailJS. Ниже в коде нужно указать ваши ключи сервиса.
-            </p>
+            <p class="status" id="status">Форма готова к отправке.</p>
           </div>
         </form>
       </div>
@@ -535,7 +482,6 @@
   </main>
 
   <script>
-    // Вставьте сюда ваши реальные данные из EmailJS.
     const EMAILJS_PUBLIC_KEY = "-7vwTG2tHewgjgn3x";
     const EMAILJS_SERVICE_ID = "service_enxggkv";
     const EMAILJS_TEMPLATE_ID = "template_qhjhiqx";
@@ -545,22 +491,9 @@
     const statusEl = document.getElementById("status");
     const submitBtn = document.getElementById("submitBtn");
 
-    let autoSendTimer = null;
-    let lastSentFingerprint = "";
-    let emailReady = false;
-
-    if (
-      EMAILJS_PUBLIC_KEY !== "-7vwTG2tHewgjgn3x" &&
-      EMAILJS_SERVICE_ID !== "service_enxggkv" &&
-      EMAILJS_TEMPLATE_ID !== "template_qhjhiqx"
-    ) {
-      emailjs.init({
-        publicKey: EMAILJS_PUBLIC_KEY
-      });
-      emailReady = true;
-    } else {
-      statusEl.textContent = "Форма готова визуально. Для автоотправки нужно подставить ключи EmailJS.";
-    }
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY
+    });
 
     function getFormData() {
       const formData = new FormData(form);
@@ -576,11 +509,7 @@
       return Boolean(data.fullName || data.clinic || data.phone || data.social);
     }
 
-    function buildFingerprint(data) {
-      return JSON.stringify(data);
-    }
-
-    async function sendLead(mode) {
+    async function sendLead() {
       const data = getFormData();
 
       if (!hasAnyValue(data)) {
@@ -588,25 +517,12 @@
         return;
       }
 
-      const fingerprint = buildFingerprint(data);
-
-      if (mode === "auto" && fingerprint === lastSentFingerprint) {
-        return;
-      }
-
-      if (!emailReady) {
-        statusEl.textContent = "Укажите ключи EmailJS, чтобы включить отправку заявок.";
-        return;
-      }
-
       submitBtn.disabled = true;
-      statusEl.textContent =
-        mode === "auto" ? "Автоматическая отправка данных..." : "Отправка данных...";
+      statusEl.textContent = "Отправка данных...";
 
       try {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          receiver_email: dan47447@gmail.com,
-          mode: mode === "auto" ? "Частичное заполнение" : "Ручная отправка",
+          receiver_email: RECEIVER_EMAIL,
           full_name: data.fullName || "Не указано",
           clinic: data.clinic || "Не указано",
           phone: data.phone || "Не указано",
@@ -615,11 +531,8 @@
           sent_at: new Date().toLocaleString("ru-RU")
         });
 
-        lastSentFingerprint = fingerprint;
-        statusEl.textContent =
-          mode === "auto"
-            ? "Черновик заявки автоматически отправлен представителям B. Braun."
-            : "Заявка успешно отправлена представителям B. Braun.";
+        statusEl.textContent = "Заявка успешно отправлена.";
+        form.reset();
       } catch (error) {
         console.error(error);
         statusEl.textContent = "Не удалось отправить данные. Проверьте настройки EmailJS.";
@@ -628,26 +541,9 @@
       }
     }
 
-    function scheduleAutoSend() {
-      clearTimeout(autoSendTimer);
-      autoSendTimer = setTimeout(() => {
-        sendLead("auto");
-      }, 1500);
-    }
-
-    form.addEventListener("input", () => {
-      statusEl.textContent = "Изменения сохранены в форме. Подготавливаю автоотправку...";
-      scheduleAutoSend();
-    });
-
-    form.addEventListener("change", () => {
-      scheduleAutoSend();
-    });
-
-    form.addEventListener("submit", async (event) => {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
-      clearTimeout(autoSendTimer);
-      await sendLead("manual");
+      await sendLead();
     });
   </script>
 </body>
