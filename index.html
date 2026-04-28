@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B. Braun | Форма связи</title>
+  <meta
+    name="description"
+    content="Оставьте контактные данные для связи с представителями B. Braun."
+  />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    :root {
+      --bg-1: #f8fff3;
+      --bg-2: #eef8e3;
+      --card: rgba(255, 255, 255, 0.92);
+      --line: #d7e8c5;
+      --green-1: #9dcb64;
+      --green-2: #78aa3f;
+      --green-3: #547b2a;
+      --text: #22311f;
+      --muted: #697863;
+      --shadow: 0 24px 60px rgba(84, 123, 42, 0.16);
+      --radius-xl: 32px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at left top, rgba(157, 203, 100, 0.38), transparent 28%),
+        radial-gradient(circle at right 18%, rgba(120, 170, 63, 0.18), transparent 24%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 16px;
+    }
+
+    .shell {
+      width: min(1080px, 100%);
+      background: var(--card);
+      border: 1px solid rgba(120, 170, 63, 0.14);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      padding: 28px 28px 10px;
+      background:
+        linear-gradient(135deg, rgba(157, 203, 100, 0.12), rgba(255, 255, 255, 0) 50%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      background: #f7fdec;
+      border: 1px solid #dcebcf;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--green-1), var(--green-2));
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .headline {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: var(--green-3);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 56ch;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1rem;
+    }
+
+    .content {
+      padding: 10px 28px 32px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+    }
+
+    .field label {
+      font-weight: 800;
+      font-size: 0.96rem;
+      letter-spacing: -0.02em;
+    }
+
+    .input-wrap,
+    .social-wrap {
+      min-height: 88px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f7fcec 100%);
+      transition: 0.2s ease;
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .input-wrap:focus-within,
+    .social-wrap:focus-within {
+      border-color: var(--green-1);
+      box-shadow: 0 0 0 5px rgba(157, 203, 100, 0.18);
+      transform: translateY(-1px);
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font: inherit;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input::placeholder {
+      color: #90a287;
+    }
+
+    .social-wrap {
+      padding: 14px;
+    }
+
+    .social-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social-option {
+      position: relative;
+    }
+
+    .social-option input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid #dcebcf;
+      background: #fbfff8;
+      cursor: pointer;
+      font-weight: 800;
+      transition: 0.2s ease;
+      user-select: none;
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #eef7e2;
+      color: var(--green-3);
+      font-size: 14px;
+      font-weight: 900;
+      flex: 0 0 28px;
+    }
+
+    .social-option input:checked + .social-pill {
+      background: linear-gradient(180deg, var(--green-1), var(--green-2));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 14px 26px rgba(84, 123, 42, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .social-option input:checked + .social-pill .social-icon {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .button {
+      width: 100%;
+      min-height: 76px;
+      border: 0;
+      border-radius: var(--radius-pill);
+      padding: 18px 24px;
+      background: linear-gradient(180deg, var(--green-2), var(--green-3));
+      color: #fff;
+      font: inherit;
+      font-size: 1.02rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      box-shadow: 0 18px 34px rgba(84, 123, 42, 0.2);
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button:disabled {
+      opacity: 0.72;
+      cursor: wait;
+      transform: none;
+    }
+
+    .status {
+      min-height: 24px;
+      margin: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-note {
+      margin: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .content {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 16px;
+      }
+
+      .shell {
+        border-radius: 24px;
+      }
+
+      .brand {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .social-options {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .social-pill {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .button {
+        min-height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <div class="hero">
+        <div class="brand" aria-label="B. Braun">
+          <div class="brand-mark">+</div>
+          <div class="brand-copy">
+            <strong>B. Braun</strong>
+            <span>Контактная форма для связи</span>
+          </div>
+        </div>
+
+        <div class="headline">
+          <div class="eyebrow">Форма обратной связи</div>
+          <h1>Свяжитесь с представителями B. Braun</h1>
+          <p class="subtitle">
+            Оставьте ваши данные, и представители B. Braun свяжутся с вами в удобном формате.
+          </p>
+        </div>
+      </div>
+
+      <div class="content">
+        <form id="leadForm">
+          <div class="grid">
+            <div class="field">
+              <label for="fullName">ФИО</label>
+              <div class="input-wrap">
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Введите ФИО"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="clinic">Название вашего ЛПУ или Мед. учреждения</label>
+              <div class="input-wrap">
+                <input
+                  id="clinic"
+                  name="clinic"
+                  type="text"
+                  autocomplete="organization"
+                  placeholder="Введите название учреждения"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="phone">Номер телефона</label>
+              <div class="input-wrap">
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="+7 (___) ___-__-__"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Соц. сеть для связи</label>
+              <div class="social-wrap">
+                <div class="social-options">
+                  <label class="social-option">
+                    <input type="radio" name="social" value="Telegram" />
+                    <span class="social-pill">
+                      <span class="social-icon">Tg</span>
+                      Telegram
+                    </span>
+                  </label>
+
+                  <label class="social-option">
+                    <input type="radio" name="social" value="WhatsApp" />
+                    <span class="social-pill">
+                      <span class="social-icon">Wa</span>
+                      WhatsApp
+                    </span>
+                  </label>
+
+                  <label class="social-option">
+                    <input type="radio" name="social" value="VK" />
+                    <span class="social-pill">
+                      <span class="social-icon">VK</span>
+                      VK
+                    </span>
+                  </label>
+
+                  <label class="social-option">
+                    <input type="radio" name="social" value="Email" />
+                    <span class="social-pill">
+                      <span class="social-icon">@</span>
+                      Email
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="button" id="submitBtn" type="submit">
+              Проинформировать представителей B.Braun
+            </button>
+            <p class="status" id="status">Заполните форму и отправьте заявку.</p>
+            <p class="footer-note">Отправка выполняется только после нажатия на кнопку.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const EMAILJS_PUBLIC_KEY = "-7vwTG2tHewgjgn3x";
+    const EMAILJS_SERVICE_ID = "service_enxggkv";
+    const EMAILJS_TEMPLATE_ID = "template_qhjhiqx";
+    const RECEIVER_EMAIL = "dan47447@gmail.com";
+
+    const form = document.getElementById("leadForm");
+    const statusEl = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY
+    });
+
+    function getFormData() {
+      const formData = new FormData(form);
+      return {
+        fullName: String(formData.get("fullName") || "").trim(),
+        clinic: String(formData.get("clinic") || "").trim(),
+        phone: String(formData.get("phone") || "").trim(),
+        social: String(formData.get("social") || "").trim()
+      };
+    }
+
+    function hasAnyValue(data) {
+      return Boolean(data.fullName || data.clinic || data.phone || data.social);
+    }
+
+    async function sendLead() {
+      const data = getFormData();
+
+      if (!hasAnyValue(data)) {
+        statusEl.textContent = "Заполните хотя бы одно поле.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusEl.textContent = "Отправка заявки...";
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          receiver_email: RECEIVER_EMAIL,
+          full_name: data.fullName || "Не указано",
+          clinic: data.clinic || "Не указано",
+          phone: data.phone || "Не указано",
+          social: data.social || "Не указано",
+          page_url: window.location.href,
+          sent_at: new Date().toLocaleString("ru-RU")
+        });
+
+        form.reset();
+        statusEl.textContent = "Заявка успешно отправлена.";
+      } catch (error) {
+        console.error(error);
+        statusEl.textContent = "Ошибка отправки. Проверьте настройки EmailJS.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      await sendLead();
+    });
+  </script>
+</body>
+</html>
