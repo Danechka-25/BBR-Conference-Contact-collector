@@ -605,7 +605,7 @@
 
       try {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          receiver_email: RECEIVER_EMAIL,
+          receiver_email: dan47447@gmail.com,
           mode: mode === "auto" ? "Частичное заполнение" : "Ручная отправка",
           full_name: data.fullName || "Не указано",
           clinic: data.clinic || "Не указано",
